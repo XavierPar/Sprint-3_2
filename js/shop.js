@@ -91,7 +91,14 @@ function cleanCart() {
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
+    let sum =0;
+    console.log('suma antes de empezar', sum);
+    for (let i = 0; i<cartList.length; i++) {
+        sum+=cartList[i].price; //al precio actual le suma los nuevos precios
+        console.log('suma depués del loop', sum); // vemos la suma
+    }
 }
+
 
 // Exercise 4
 function generateCart() {
