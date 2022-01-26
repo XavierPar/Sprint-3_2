@@ -83,7 +83,9 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-
+    cartList.length = 0 
+    //https://stackoverflow.com/questions/1232040/how-do-i-empty-an-array-in-javascript (I use the method 2 in this link)
+    console.log('cleanded')
 }
 
 // Exercise 3
