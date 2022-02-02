@@ -118,11 +118,9 @@ function generateCart() {
     for(let i = 0; i<cartList.length; i++) { // Looking into the cartList array
             if(cartList[i]==cartList[i-1]){ // looking for duplicates inside the same cartList array
                 cart[cart.length-1].quantity ++;
-                //cart[cart.length-1].subtotal = price*quantity;
                 console.log(cart);
         } else{
                 cart.push (cartList[i]);
-                 //cart[i].subtotal = price*quantity;
                 console.log(cart);
             }
     }
@@ -133,6 +131,15 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    cart.forEach(object => { // creates the promotions value
+        object.subtotal = price*quantity; 
+    var oilQuantity = cart.id[1].quantity;    
+    /*if (oilQuantity>=3) {
+        let oilsubtotal = cart.id[1].subtotal;
+        let oilDiscountSubstrate = cart.id[1].quantity*0.5; 
+        cart.id[1].subtotalWithDiscount= oilsubtotal-(oilDiscount) //maybe we need to make a third value 
+        console.log (cart.id[1].subtotalWithDiscount)
+    } */  
 }
 
 
