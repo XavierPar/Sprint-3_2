@@ -74,9 +74,7 @@ function buy(id) {
             console.log("funciona loop 1", "true"); //check that is selected
             cartList.push (products[i]); 
             console.log (cartList);
-        } /*else {
-            console.log("funciona loop 1", "false"); //check other products are not selected
-    }*/
+        } 
     }
 }
 
@@ -104,6 +102,26 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    
+    for(let i = 0; i<cartList.length; i++) { // Lokking into the cartList array
+     cartList[i].quantity=1;
+     if (cart.lenght==0) { //!!!!! NEW TRY
+        cart.push (cartList[i]); 
+     }
+        for(let j = 0; j<cart.length; j++) { 
+            console.log(cart);
+            if(cartList[i]==cart[j]){ // looking for duplicates inside the same cartList array
+                cart[j].quantity ++;
+                //cart[j].subtotal = price*quantity;
+                console.log(cart);
+            } else{
+                cart.push (cartList[i]);
+                console.log(cart[j]);
+                //cart[j].subtotal = price*quantity;
+                console.log(cart);
+            }
+        }
+    }
 }
 
 // Exercise 5
