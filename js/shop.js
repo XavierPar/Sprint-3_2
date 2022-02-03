@@ -92,8 +92,8 @@ function calculateTotal() {
     let sum =0;
     console.log('suma antes de empezar', sum);
     for (let i = 0; i<cartList.length; i++) {
-        sum+=cartList[i].price; //al precio actual le suma los nuevos precios
-        console.log('suma depués del loop', sum); // vemos la suma
+        sum+=cartList[i].price; //we add the new prices to the original sum
+        console.log('suma depués del loop', sum); // we can check results
     }
 }
 
@@ -118,11 +118,12 @@ function generateCart() {
     for(let i = 0; i<cartList.length; i++) { // Looking into the cartList array
             if(cartList[i]==cartList[i-1]){ // looking for duplicates inside the same cartList array
                 cart[cart.length-1].quantity ++;
-                console.log(cart);
+                // console.log(cart); this was used to check and find bugs. Activate if there are problems
         } else{
                 cart.push (cartList[i]);
-                console.log(cart);
+                // console.log(cart); this was used to check and find bugs. Activate if there are problems
             }
+        console.log(cart);  // this is used to check the final result
     }
 }
     
@@ -132,14 +133,22 @@ function generateCart() {
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
     cart.forEach(object => { // creates the promotions value
-        object.subtotal = price*quantity; 
-    var oilQuantity = cart.id[1].quantity;    
-    /*if (oilQuantity>=3) {
-        let oilsubtotal = cart.id[1].subtotal;
-        let oilDiscountSubstrate = cart.id[1].quantity*0.5; 
-        cart.id[1].subtotalWithDiscount= oilsubtotal-(oilDiscount) //maybe we need to make a third value 
-        console.log (cart.id[1].subtotalWithDiscount)
-    } */  
+        object.subtotal = object.price*object.quantity;
+    })
+    // Vartiables to work the discounts
+        var getoil = cart.find(x => x.id === 1);
+        var oilQuantity = getoil.quantity; 
+        console.log (oilQuantity);
+        var getcupcake =  cart.find(x => x.id === 3);
+        var cupcakeQuantity = getcupcake.quantity;  
+    //Discounts themselves, first oil...  
+    if (oilQuantity>=3) {
+        let oilsubtotal = getoil.subtotal;
+        let oilDiscountSubstrate = oilQuantity*0.5; 
+        getoil.subtotalWithDiscount= oilsubtotal-(oilDiscountSubstrate) //maybe we need to make a third value 
+        console.log (getoil.subtotalWithDiscount) // to check results
+    } 
+        
 }
 
 
