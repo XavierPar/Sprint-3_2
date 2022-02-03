@@ -93,8 +93,9 @@ function calculateTotal() {
     console.log('suma antes de empezar', sum);
     for (let i = 0; i<cartList.length; i++) {
         sum+=cartList[i].price; //we add the new prices to the original sum
-        console.log('suma depués del loop', sum); // we can check results
+        
     }
+    console.log('suma depués del loop', sum); // we can check results
 }
 
 
@@ -123,8 +124,9 @@ function generateCart() {
                 cart.push (cartList[i]);
                 // console.log(cart); this was used to check and find bugs. Activate if there are problems
             }
-        console.log(cart);  // this is used to check the final result
-    }
+        console.log("final cart log: "+cart);  // this is used to check the final result
+    } 
+    
 }
     
 
@@ -138,15 +140,20 @@ function applyPromotionsCart() {
     // Vartiables to work the discounts
         var getoil = cart.find(x => x.id === 1);
         var oilQuantity = getoil.quantity; 
-        console.log (oilQuantity);
-        var getcupcake =  cart.find(x => x.id === 3);
-        var cupcakeQuantity = getcupcake.quantity;  
-    //Discounts themselves, first oil...  
+        var getcupcake = cart.find(y => y.id === 3);
+        var cupcakeQuantity = getcupcake.quantity; 
+    //Discounts themselves, first oil...then cupcake mix  
     if (oilQuantity>=3) {
         let oilsubtotal = getoil.subtotal;
-        let oilDiscountSubstrate = oilQuantity*0.5; 
-        getoil.subtotalWithDiscount= oilsubtotal-(oilDiscountSubstrate) //maybe we need to make a third value 
-        console.log (getoil.subtotalWithDiscount) // to check results
+        let oilDiscountSubstrate = oilQuantity*0.5; // -0.5 per oil, so the price lowers from 10.5 to 10
+        getoil.subtotalWithDiscount= oilsubtotal-(oilDiscountSubstrate); //we make the discount happen
+        console.log ("oil quantity: "+oilQuantity +", "+"total oil price with discount: "+getoil.subtotalWithDiscount); // to check results
+    } 
+
+    if (cupcakeQuantity>=10) {
+        let cupcakesubtotal =  getcupcake.subtotal;
+        getcupcake.subtotalWithDiscount= cupcakesubtotal*(2/3); //we make the discount happen
+        console.log ("cupcake quantity: "+cupcakeQuantity +", "+"total cupcake price with discount: "+getcupcake.subtotalWithDiscount); // to check results
     } 
         
 }
